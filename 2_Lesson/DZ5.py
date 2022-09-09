@@ -1,7 +1,7 @@
 # Перемешать список
 
 # import random
-# x = 'fdsfgrgwf'
+# x = ['f', 'd', 's', 'f']
 # print (x)
 # print (random.sample(x, len(x)))
 
