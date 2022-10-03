@@ -4,18 +4,18 @@ import csv
 from importlib.resources import path
 import sqlite3 as sql
 import json
-
+import sys
 import user_input
 import controller
 
 
 
-def Data_Base():
+def Data_Base(con, cur):
     
     
-    con = sql.connect('test.db')
+    
     with con:
-        cur = con.cursor()
+        
         cur.execute("CREATE TABLE IF NOT EXISTS `test` (`user_id` INTEGER, `name` STRING, `surname` STRING, `tel` STRING)")
 
         user_choice = user_input.menu()
@@ -31,7 +31,7 @@ def Data_Base():
             controller.Export_CSV()
         elif user_choice == '6':
             controller.Export_JSON()
+        elif user_choice == '7':
+            sys.exit()
 
-
-        con.commit()
-        cur.close()
+        
