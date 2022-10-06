@@ -22,8 +22,7 @@ Button(root,text = 'Download video',command = Downloader_video).place(x = 190, y
 
 def Downloader_audio():
     url = YouTube(str(link.get()))
-    audi = url.streams.filter(only_audio=True)
-    audio = audi.first()
+    audio = url.streams.filter(only_audio=True).desc().first()
     audio.download()
     Label(root,text = 'Downloaded',font = 'arial 15').place(x = 180, y = 210)
 Button(root,text = 'Download audio',command = Downloader_audio).place(x = 190, y = 200)
