@@ -12,21 +12,22 @@ async def Download(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
 
 async def Link1(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    global stroka
+    global link
     stroka = update.message.text
     s = stroka.split()
     link = s[1]
-    print(link)
+    
     await update.message.reply_text('Выберите /video или /audio скачать')
-    return link
+    
 
-async def Video(update: Update, context: ContextTypes.DEFAULT_TYPE, link):
-    url = YouTube(str(link.get()))
+async def Video(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    url = YouTube(str(link))
     video = url.streams.first()
     video.download()
+    
 
 async def Audio(update: Update, context: ContextTypes.DEFAULT_TYPE, link):
-    url = YouTube(str(link.get()))
+    url = YouTube(str(link))
     audio = url.streams.filter(only_audio=True).desc().first()
     audio.download()
 
